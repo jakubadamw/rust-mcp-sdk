@@ -238,7 +238,9 @@ where
 
     // Wait for initialize notification
     let notification = expect_notification(&mut transport, "initialize notification").await?;
-    let ClientNotification::InitializedNotification(_) = notification else {
+    let (ClientNotification::InitializedNotification(_)
+    | ClientNotification::InitializedNotificationClaudeDesktopCompat(_)) = notification
+    else {
         return Err(ServerInitializeError::ExpectedInitializedNotification(
             Some(ClientJsonRpcMessage::notification(notification)),
         ));

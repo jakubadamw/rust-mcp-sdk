@@ -656,6 +656,11 @@ const_string!(InitializedNotificationMethod = "notifications/initialized");
 /// This notification is sent from the client to the server after initialization has finished.
 pub type InitializedNotification = NotificationNoParam<InitializedNotificationMethod>;
 
+const_string!(InitializedNotificationMethodClaudeDesktopCompat = "initialized");
+/// This notification is sent from the client to the server after initialization has finished (Claude desktop compatible).
+pub type InitializedNotificationClaudeDesktopCompat =
+    NotificationNoParam<InitializedNotificationMethodClaudeDesktopCompat>;
+
 /// Parameters sent by a client when initializing a connection to an MCP server.
 ///
 /// This contains the client's protocol version, capabilities, and implementation
@@ -1311,6 +1316,7 @@ ts_union!(
     | CancelledNotification
     | ProgressNotification
     | InitializedNotification
+    | InitializedNotificationClaudeDesktopCompat
     | RootsListChangedNotification;
 );
 

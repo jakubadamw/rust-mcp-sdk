@@ -82,6 +82,7 @@ variant_extension! {
         CancelledNotification
         ProgressNotification
         InitializedNotification
+        InitializedNotificationClaudeDesktopCompat
         RootsListChangedNotification
     }
 }

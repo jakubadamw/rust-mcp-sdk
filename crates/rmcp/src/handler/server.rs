@@ -81,9 +81,8 @@ impl<H: ServerHandler> Service<RoleServer> for H {
             ClientNotification::ProgressNotification(notification) => {
                 self.on_progress(notification.params, context).await
             }
-            ClientNotification::InitializedNotification(_notification) => {
-                self.on_initialized(context).await
-            }
+            ClientNotification::InitializedNotificationClaudeDesktopCompat(_)
+            | ClientNotification::InitializedNotification(_) => self.on_initialized(context).await,
             ClientNotification::RootsListChangedNotification(_notification) => {
                 self.on_roots_list_changed(context).await
             }
